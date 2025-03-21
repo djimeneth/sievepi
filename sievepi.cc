@@ -3,9 +3,12 @@
 // This program counts (and possibly prints) the prime numbers up to the
 // integer command line argument using a blocked sieve of Eratosthenes
 
-// It works up to 100,000,000,000 - I couldn't be bothered to wait beyond 
-// that because it takes a few minutes. checked against powers of 10 in 
+// It works up to 1,000,000,000,000 - I couldn't be bothered to wait beyond 
+// that because it takes several minutes. checked against powers of 10 in 
 // https://mathworld.wolfram.com/PrimeCountingFunction.html
+// output with 1 trillion:
+// pi(1000000000000) = 37607912018
+// takes 644 seconds on my Intel NUC bought in 2024
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,7 +23,7 @@
 #endif
 
 // "ENOUGH" array entries to memoize prime numbers. will eventually not
-// be enough, not tested beyond 10^11 but should be good enough for pi(n)
+// be enough, not tested beyond 10^12 but should be good enough for pi(n)
 // where n is within 64 bits
 
 #define ENOUGH		65536 
@@ -231,7 +234,7 @@ uint64_t pi (uint64_t v) {
 }
 
 int main (int argc, char *argv[]) {
-	uint64_t n;
+	unsigned long int n;
 	if (argc != 2) {
 		printf ("Usage: %s <n> to compute pi(n)\n", argv[0]);
 		return 1;
